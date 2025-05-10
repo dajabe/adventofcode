@@ -1,0 +1,7 @@
+[env]
+_.path = [
+  "./bin",
+]
+
+[tools]
+ruby = "3.4.3"
