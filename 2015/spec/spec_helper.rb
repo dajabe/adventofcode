@@ -13,6 +13,9 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+def report_answer(answer)
+  RSpec.configuration.reporter.message("#{answer} is the final answer")
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

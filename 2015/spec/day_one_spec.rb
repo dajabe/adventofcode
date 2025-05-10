@@ -60,5 +60,12 @@ RSpec.describe DayOne, 'Provides answers to DayOne problems correctly' do
       @dayone.get_floor(')())())')
       expect(@dayone.floor).to eq(-3)
     end
+
+    it 'gives the day one answer' do
+      input = File.read('input/day_one_input.txt')
+      @dayone.get_floor(input)
+      answer = @dayone.floor
+      report_answer(answer)
+    end
   end
 end
