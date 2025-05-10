@@ -17,54 +17,84 @@ RSpec.describe DayOne, 'Provides answers to DayOne problems correctly' do
     end
 
     it '(()) returns the correct floor' do
-      @dayone.get_floor('(())')
+      @dayone.directions = '(())'
+      @dayone.find_floor
       expect(@dayone.floor).to eq 0
     end
 
     it '()() returns the correct floor' do
-      @dayone.get_floor('()()')
+      @dayone.directions = '()()'
+      @dayone.find_floor
       expect(@dayone.floor).to eq 0
     end
 
     it '((( returns the correct floor' do
-      @dayone.get_floor('(((')
+      @dayone.directions = '((('
+      @dayone.find_floor
       expect(@dayone.floor).to eq 3
     end
 
     it '(()(()( returns the correct floor' do
-      @dayone.get_floor('(()(()(')
+      @dayone.directions = '(()(()('
+      @dayone.find_floor
       expect(@dayone.floor).to eq 3
     end
 
     it '))((((( returns the correct floor' do
-      @dayone.get_floor('(()(()(')
+      @dayone.directions = '(()(()('
+      @dayone.find_floor
       expect(@dayone.floor).to eq 3
     end
 
     it '()) returns the correct floor' do
-      @dayone.get_floor('())')
+      @dayone.directions = '())'
+      @dayone.find_floor
       expect(@dayone.floor).to eq(-1)
     end
 
     it '))( returns the correct floor' do
-      @dayone.get_floor('))(')
+      @dayone.directions = '))('
+      @dayone.find_floor
       expect(@dayone.floor).to eq(-1)
     end
 
     it '))) returns the correct floor' do
-      @dayone.get_floor(')))')
+      @dayone.directions = ')))'
+      @dayone.find_floor
       expect(@dayone.floor).to eq(-3)
     end
 
     it ')())()) returns the correct floor' do
-      @dayone.get_floor(')())())')
+      @dayone.directions = ')())())'
+      @dayone.find_floor
       expect(@dayone.floor).to eq(-3)
     end
 
-    it 'gives the day one answer' do
+    it 'gives the day one part one answer' do
       input = File.read('input/day_one_input.txt')
-      @dayone.get_floor(input)
+      @dayone.directions = input
+      @dayone.find_floor
       answer = @dayone.floor
+      report_answer(answer)
+    end
+
+    it ') returns position 1' do
+      @dayone.directions = ')'
+      @dayone.find_floor
+      expect(@dayone.basement_found).to eq(1)
+    end
+
+    it '()()) returns position 1' do
+      @dayone.directions = '()())'
+      @dayone.find_floor
+      expect(@dayone.basement_found).to eq(5)
+    end
+
+    it 'gives the day one part two answer' do
+      input = File.read('input/day_one_input.txt')
+      @dayone.directions = input
+      @dayone.find_floor
+      answer = @dayone.basement_found
       report_answer(answer)
     end
   end

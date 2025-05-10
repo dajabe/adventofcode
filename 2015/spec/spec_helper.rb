@@ -13,8 +13,8 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-def report_answer(answer)
-  RSpec.configuration.reporter.message("#{answer} is the final answer")
+def report_answer(answer, part = 'one')
+  RSpec.configuration.reporter.message("#{answer} is the #{part} answer")
 end
 
 RSpec.configure do |config|
